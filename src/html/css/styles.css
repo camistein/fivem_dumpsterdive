@@ -1,112 +1,111 @@
 * {
-    --main-bg-color: rgba(39, 39, 39,1);
-    --text-color: #fff;
-    --progressbar-default-bg: rgb(32, 32, 32);
-    --progressbar-default-inset: #1a1a1a;
-    --progressbar-complete-bg: rgb(68, 141, 68);
-    --progressbar-complete-inset: rgb(169, 218, 169);
-    --item-color:rgba(114, 204, 114, 1);
+	--main-bg-color: rgba(39, 39, 39, 1);
+	--text-color: #fff;
+	--progressbar-default-bg: rgb(32, 32, 32);
+	--progressbar-default-inset: #1a1a1a;
+	--progressbar-complete-bg: rgb(68, 141, 68);
+	--progressbar-complete-inset: rgb(169, 218, 169);
+	--item-color: rgba(114, 204, 114, 1);
 }
 
 body {
-    background: transparent !important;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    height: 100%;
-    width: 100%;
+	background: transparent !important;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
 }
 .dv-progressbar-wrapper {
-    display: none;
-    justify-content:center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
 }
 
 .dv-progressbar {
-  width: 0%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  background-color: var(--progressbar-complete-bg);
-  border-radius: 0.2rem;
-  box-shadow: inset -1px 3px 4px var(--progressbar-complete-inset);
+	width: 0%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	background-color: var(--progressbar-complete-bg);
+	border-radius: 0.2rem;
+	box-shadow: inset -1px 3px 4px var(--progressbar-complete-inset);
 }
 
- .dv-progressbar-text {
-   position: absolute;
-   left: 0;
-   z-index: 99;
-   width: 100%;
-   color:#d3d3d3;
-   width: 100%;
-   height: 100%;
-   display: block;
-   text-align: center;
-   letter-spacing: .1em;
-   font-size: 0.75em;
-   font-family: 'Poppins', sans-serif; 
- }
+.dv-progressbar-text {
+	position: absolute;
+	left: 0;
+	z-index: 99;
+	width: 100%;
+	color: #d3d3d3;
+	width: 100%;
+	height: 100%;
+	display: block;
+	text-align: center;
+	letter-spacing: 0.1em;
+	font-size: 0.75em;
+	font-family: 'Poppins', sans-serif;
+}
 
 .dv-progressbar-content {
-  width: 15rem;
-  color: var(--text-color);
-  display: flex;
-  margin: auto;
-  background-color: var(--main-bg-color);
-  padding: 1rem 1.5rem;
-  flex-direction: column;
-  justify-content:center;
-  text-align: center;
-  border-radius: 0.2rem;
-  gap: 0.5rem;
-  box-shadow: 2px 2px 4px #000;
-  transition: all 1s ease-in;
+	width: 15rem;
+	color: var(--text-color);
+	display: flex;
+	margin: auto;
+	background-color: var(--main-bg-color);
+	padding: 1rem 1.5rem;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	border-radius: 0.2rem;
+	gap: 0.5rem;
+	box-shadow: 2px 2px 4px #000;
+	transition: all 1s ease-in;
 }
 
 .dv-progressbar-animation {
-  width: 100%;
-  position: relative;
-  height: 1rem;
-  border-radius: 0.2rem;
-  background-color: var(--progressbar-default-bg);
-  box-shadow: inset 2px 2px 4px var(--progressbar-default-inset);
+	width: 100%;
+	position: relative;
+	height: 1rem;
+	border-radius: 0.2rem;
+	background-color: var(--progressbar-default-bg);
+	box-shadow: inset 2px 2px 4px var(--progressbar-default-inset);
 }
 
 .dv-progressbar-label {
-  width: 100%;
-  letter-spacing: .1em;
-   font-size: 0.875em;
-   font-weight: 200;
-   text-shadow:1px 1px 1px #000;
-    font-family: 'Poppins', sans-serif;
+	width: 100%;
+	letter-spacing: 0.1em;
+	font-size: 0.875em;
+	font-weight: 200;
+	text-shadow: 1px 1px 1px #000;
+	font-family: 'Poppins', sans-serif;
 }
 
 .dv-notify-content {
-    background-color: var(--main-bg-color);
-    color:  var(--text-color);;
-     font-size: 0.875em;
-     font-weight: 200;
-     font-family: 'Poppins', sans-serif;
-     border-radius: 0.2rem;
-     padding: 0.5rem 1rem;
-     width: 20rem;
-     opacity: 0;
-     box-shadow: 2px 2px 4px #000;
-     transition: all 1s ease-in;
-  }
-  
-  .dv-notify-wrapper {
-      display: flex;
-      justify-content:center;
-      align-items: center;
-      height: 100%;
-      width: 100%;
-  }
+	background-color: var(--main-bg-color);
+	color: var(--text-color);
+	font-size: 0.875em;
+	font-weight: 200;
+	font-family: 'Poppins', sans-serif;
+	border-radius: 0.2rem;
+	padding: 0.5rem 1rem;
+	width: 20rem;
+	opacity: 0;
+	box-shadow: 2px 2px 4px #000;
+	transition: all 1s ease-in;
+}
 
-  .dv-notify-item {
-    color: var(--item-color);
-  }
+.dv-notify-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+}
 
+.dv-notify-item {
+	color: var(--item-color);
+}

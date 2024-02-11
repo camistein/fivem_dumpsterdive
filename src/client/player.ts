@@ -1,7 +1,7 @@
-import Coords from "../shared/coords";
+import Coords from '../shared/coords';
 
 export default interface Player {
-    id: number;
-    coords:Coords
-    nearDumpster: boolean
-  }
+	id: number;
+	coords: Coords;
+	nearDumpster: boolean;
+}

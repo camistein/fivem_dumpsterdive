@@ -1,0 +1,10 @@
+{
+	"htmlWhitespaceSensitivity": "css",
+	"jsxBracketSameLine": true,
+	"jsxSingleQuote": true,
+	"semi": true,
+	"singleQuote": true,
+	"tabWidth": 2,
+	"trailingComma": "all",
+	"useTabs": true
+}

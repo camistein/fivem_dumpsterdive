@@ -1,17 +1,16 @@
+Mod to add dumpsterdiving to you fivem server. Written in typescript.
 
-
-Mod to add dumpsterdiving to you fivem server.
-Written in typescript. 
-
-Feel free to send me PR or add an issue. 
+Feel free to send me PR or add an issue.
 
 ## ESX || QBCore??
 
-Script should have support for both frameworks when it comes to recieving money and items, no need to do anything. 
+Script should have support for both frameworks when it comes to recieving money
+and items, no need to do anything.
 
-## Override styling 
+## Override styling
 
-If you wish to override any css styling for the progressbar or notification popup you can ovveride css variables or edit styles.css
+If you wish to override any css styling for the progressbar or notification
+popup you can ovveride css variables or edit styles.css
 
 ```
     --main-bg-color: rgba(39, 39, 39,1);
@@ -23,7 +22,6 @@ If you wish to override any css styling for the progressbar or notification popu
     --item-color:rgba(114, 204, 114, 1);
 ```
 
-
 ## Configure
 
 **config.json** needs to be in the [config] folder
@@ -31,6 +29,7 @@ If you wish to override any css styling for the progressbar or notification popu
 ### Style interaction text
 
 You can style the interaction text shown on dumpsters
+
 ```
 "textStyle" : {
         "font": 4,
@@ -52,9 +51,10 @@ You can style the interaction text shown on dumpsters
 },
 ```
 
-### Translations 
+### Translations
 
 Translate texts used in the mod
+
 ```
     "translations": {
         "dumpsterdive": "[~g~E~s~] Look through trash",
@@ -68,15 +68,16 @@ Translate texts used in the mod
 
 ### Items
 
-Configure lootable items 
+Configure lootable items
 
-**amount** can be number or a 2 number array for a range, player will recieve an amount between those 2 numbers.
+**amount** can be number or a 2 number array for a range, player will recieve an
+amount between those 2 numbers.
 
 **chance** is 0-100 as loot chance percentage
 
 **label** the label is the text displayed when recieveing the loot.
 
-**id**  id of item much match id in database. 
+**id** id of item much match id in database.
 
 ```
     "items": [
@@ -113,12 +114,12 @@ Configure lootable items
 
 ### Models
 
-Configure gta models to apply dumpster diving to. 
+Configure gta models to apply dumpster diving to.
 
 ```
     "dumpsterModels": [
-        "p_dumpster_t", 
-        "prop_cs_dumpster_01a", 
+        "p_dumpster_t",
+        "prop_cs_dumpster_01a",
         "prop_dumpster_01a",
         "prop_dumpster_02a",
         "prop_dumpster_02b",
@@ -129,11 +130,13 @@ Configure gta models to apply dumpster diving to.
     ],
 ```
 
-### Rules 
+### Rules
 
-**maxDumpstersPerRS** max number of dumpsters a player can loot per server restart.
+**maxDumpstersPerRS** max number of dumpsters a player can loot per server
+restart.
 
-**lootProbabilityPercent** (optional) if you wish to apply a possibility that player can recieve no loot. 
+**lootProbabilityPercent** (optional) if you wish to apply a possibility that
+player can recieve no loot.
 
 ```
     "rules": {

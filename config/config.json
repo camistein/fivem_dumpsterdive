@@ -1,0 +1,72 @@
+{
+    "textStyle" : {
+        "font": 4,
+        "scale": 0.0,
+        "size": 0.45,
+        "color" : {
+            "red": 255,
+            "green": 255,
+            "blue":255,
+            "alpha": 255
+        },
+        "textDropShadow": {
+            "distance":2,
+            "red": 255,
+            "green": 255,
+            "blue":255,
+            "alpha": 255
+        }
+    },
+    "translations": {
+        "dumpsterdive": "[~g~E~s~] Leta bland sopor",
+        "searching":"Letar..",
+        "recievedItem": "Du hitta ",
+        "recievedNoItem": "Du hittade ingenting",
+        "alreadyLooted": "Du har redan letat här, du hittade ingenting",
+        "notAllowedToLoot": "Du har letat för mycket idag, du stinker"
+    },
+    "items": [
+        {
+            "id":"cash",
+            "label": "kronor",
+            "amount": [7,100],
+            "chance": 10,
+            "type":"cash"
+        },{
+            "id": "weapon_minismg",
+            "label": "ett coolt jävla vapen",
+            "amount": 1,
+            "chance": 50,
+            "type":"weapon"
+        },
+        {
+            "id": "meth",
+            "label": "meth",
+            "amount": 1,
+            "chance": 50,
+            "type":"item"
+        },
+        {
+            "id": "oxy",
+            "label": "oxy",
+            "amount": 1,
+            "chance": 50,
+            "type":"item"
+        }
+    ],
+    "dumpsterModels": [
+        "p_dumpster_t", 
+        "prop_cs_dumpster_01a", 
+        "prop_dumpster_01a",
+        "prop_dumpster_02a",
+        "prop_dumpster_02b",
+        "prop_dumpster_3a",
+        "prop_dumpster_4a",
+        "prop_dumpster_4b",
+        "prop_snow_dumpster_01"
+    ],
+    "rules": {
+        "maxDumpstersPerRS": 8,
+        "lootProbabilityPercent": 100
+    }
+}

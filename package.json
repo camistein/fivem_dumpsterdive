@@ -1,0 +1,27 @@
+{
+  "name": "fivem-dumpsterdive",
+  "version": "2.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run clean && npm run typecheck && node src/build/build-bundle.js",
+    "clean": "rimraf ./release",
+    "typecheck": "tsc --noEmit -p src/client/tsconfig.json && tsc --noEmit -p src/server/tsconfig.json",
+    "watch": "npm run clean && cross-env IS_WATCH_MODE=1 node src/build/build-bundle.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@citizenfx/client": "^2.0.6063-1",
+    "@citizenfx/server": "^2.0.6063-1",
+    "@types/node": "^16.18.3",
+    "cross-env": "^7.0.3",
+    "esbuild": "~0.16.0",
+    "lru-cache": "7.18.0",
+    "path-scurry": "1.6.3",
+    "rimraf": "^5.0.1",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+  }
+}

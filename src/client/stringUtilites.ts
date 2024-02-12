@@ -41,5 +41,5 @@ export const displayText = (
 };
 
 export const generateUniqueId = (id: number, x: number, y: number) => {
-	return `${id}_${Math.floor(x)}_${Math.floor(y)}`;
+	return `${Math.floor(id)}_${Math.floor(x)}_${Math.floor(y)}`;
 };

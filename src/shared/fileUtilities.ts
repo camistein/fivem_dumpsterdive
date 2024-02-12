@@ -13,8 +13,6 @@ export const getFile = async (
 	fileName: string,
 ): Promise<any> => {
 	try {
-		console.log(resourcePath);
-		console.log(fileName);
 		const file = await require(resourcePath + fileName);
 		return file;
 	} catch (err) {

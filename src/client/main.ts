@@ -4,6 +4,7 @@ import Player from './player';
 import Dumpster from '../shared/dumpster';
 import { getSettings } from '../shared/settings';
 import { defaultState } from './rootState';
+import { randomNumberInRange } from '../shared/numberUtilities';
 
 const state = defaultState;
 
@@ -76,7 +77,7 @@ const initDumpsterDive = () => {
 					);
 					SendNUIMessage({
 						action: 'dv_progressbar_open',
-						duration: 10000,
+						duration: randomNumberInRange(7000, 10000),
 						label: state.settings?.translations?.searching,
 					});
 				}

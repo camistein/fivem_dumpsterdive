@@ -1,5 +1,6 @@
 import LootItem from '../shared/lootItem';
 import { Rules } from '../shared/settings';
+import { randomNumberInRange } from '../shared/numberUtilities';
 
 export const retrieveLoot = (
 	loot: LootItem[],
@@ -45,9 +46,7 @@ const getLootItem = (items: LootItem[]): LootItem | null => {
 
 	let amount = loot.amount;
 	if (!!loot && Array.isArray(loot.amount)) {
-		const randomAmount =
-			Math.floor(Math.random() * (loot.amount[1] - loot.amount[0] + 1)) +
-			loot.amount[0];
+		const randomAmount = randomNumberInRange(loot.amount[0], loot.amount[1]);
 		amount = randomAmount;
 	}
 

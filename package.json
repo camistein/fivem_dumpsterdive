@@ -3,6 +3,9 @@
 	"version": "1.0.17",
 	"description": "",
 	"main": "index.js",
+	"engine": {
+		"node": "4.15.0 || 6.10.0 || >=18.0.0"
+	},
 	"scripts": {
 		"build": "npm run clean && npm run typecheck && node src/build/build-bundle.js && prettier . --write",
 		"build:prod": "npm run clean && npm run typecheck && node src/build/build-bundle.js && prettier . --check",
@@ -16,16 +19,17 @@
 	"devDependencies": {
 		"@citizenfx/client": "^2.0.6063-1",
 		"@citizenfx/server": "^2.0.6063-1",
-		"@types/jest": "~25.1.5",
+		"@types/jest": "~27.5.1",
+		"@types/node": "^16.18.3",
 		"cross-env": "^7.0.3",
 		"esbuild": "~0.16.0",
-		"jest": "~25.0.0",
+		"jest": "~27.5.1",
 		"lru-cache": "7.18.0",
 		"path-scurry": "1.6.3",
 		"prettier": "3.2.5",
 		"rimraf": "~3.0.1",
-		"ts-jest": "~25.0.0",
-		"typescript": "^5.2.2"
+		"ts-jest": "~27.1.4",
+		"typescript": "~4.9.4"
 	},
 	"dependencies": {}
 }

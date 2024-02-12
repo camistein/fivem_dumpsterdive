@@ -19,6 +19,7 @@ You can also edit customFramework.js to override ESX or QBCore add events with y
 
 ## Images
 
+[Video preview](https://youtu.be/fbmZXR_nZcI)
 ![interaction text](https://i.ibb.co/cgBb5TL/Five-M-b2944-GTAProcess-2024-02-12-10-54-20.png)
 ![searching](https://i.ibb.co/QkYpKHx/Five-M-b2944-GTAProcess-2024-02-12-10-54-31.png)
 ![nothing found](https://i.ibb.co/vHv664r/Five-M-b2944-GTAProcess-2024-02-12-10-55-04.png)

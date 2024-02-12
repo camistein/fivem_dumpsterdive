@@ -18,7 +18,7 @@ jobs:
           npm test --if-present
       - name: Archive release zip
         id: zip_archive_artifacts
-        run:  zip -r release.zip /release /config /README.md /fxmanifest.lua 
+        run:  zip -r release.zip ${{ github.workspace }}/release ${{ github.workspace }}/config ${{ github.workspace }}/README.md ${{ github.workspace }}/fxmanifest.lua 
       - name: Archive release tar
         id: tar_archive_artifacts
         run:  tar -czvf release.tar.gz /release /config /README.md /fxmanifest.lua 

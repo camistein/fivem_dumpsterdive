@@ -1,11 +1,11 @@
 on:
   pull_request:
-    types: [opened, reopened]
+    types: [opened, reopened, synchronize]
 name: Build PullRequest
 
 jobs:
   build_and_test:
-    name: Create Release
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

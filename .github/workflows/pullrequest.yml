@@ -1,0 +1,27 @@
+on:
+  pull_request:
+    types: [opened, reopened]
+name: Build PullRequest
+
+jobs:
+  build_and_test:
+    name: Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: npm install, build, and test
+        run: |
+          npm install
+          npm run build:prod --if-present
+          npm test --if-present
+      - name: Archive release zip
+        id: zip_archive_artifacts
+        run: |  
+          cd ${{ github.workspace }}  
+          zip -r dumpsterdive.release.zip release config README.md fxmanifest.lua customFramework.js
+      - name: Archive release tar
+        id: tar_archive_artifacts
+        run: |  
+          cd ${{ github.workspace }}
+          tar -czvf dumpsterdive.release.tar.gz release config README.md fxmanifest.lua customFramework.js

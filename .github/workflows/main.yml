@@ -21,6 +21,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: artifact-release
+          retention-days: 1
           path: |
             release
             config
@@ -29,6 +30,7 @@ jobs:
             ./fxmanifest.lua
       - name: Download Artifact
         uses: actions/download-artifact@v4
+        id: download_artifacts
         with:
           name: artifact-release
           path: dist/release
@@ -48,6 +50,6 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: dist/release/artifact-release.zip
+          asset_path: ${{ steps.download_artifacts.outputs.download-path }}
           asset_name: dumpsterdive.release.zip
           asset_content_type: application/zip

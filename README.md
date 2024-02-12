@@ -7,7 +7,6 @@ Feel free to add PRs or create issues.
 2. [Images](#images)
 3. [Override styling](#override-styling)
 4. [Configure](#configure)
-5. [Roadmap](#roadmap)
 
 ## ESX or QBCore
 
@@ -30,7 +29,7 @@ You can also edit customFramework.js to override ESX or QBCore add events with y
 If you wish to override any css styling for the progressbar or notification
 popup you can ovveride css variables or edit styles.css
 
-```
+```css
     --main-bg-color: rgba(39, 39, 39,1);
     --text-color: #fff;
     --progressbar-default-bg: rgb(32, 32, 32);
@@ -44,13 +43,13 @@ popup you can ovveride css variables or edit styles.css
 
 **config.json** needs to be in the [config] folder
 
-**enabled** set enabled to true or false to easily toggle dumpsterdiving on you server
+- **enabled** set enabled to true or false to easily toggle dumpsterdiving on you server
 
 ### Style interaction text
 
 You can style the interaction text shown on dumpsters
 
-```
+```javascript
 "textStyle" : {
         "font": 4,
         "scale": 0.0,
@@ -75,7 +74,7 @@ You can style the interaction text shown on dumpsters
 
 Translate texts used in the mod
 
-```
+```javascript
     "translations": {
         "dumpsterdive": "[~g~E~s~] Look through trash",
         "searching":"Searching..",
@@ -90,16 +89,16 @@ Translate texts used in the mod
 
 Configure lootable items
 
-**amount** can be number or a 2 number array for a range, player will recieve an
+- **amount** can be number or a 2 number array for a range, player will recieve an
 amount between those 2 numbers.
 
-**chance** is 0-100 as loot chance percentage
+- **chance** is 0-100 as loot chance percentage
 
-**label** the label is the text displayed when recieveing the loot.
+- **label** the label is the text displayed when recieveing the loot.
 
-**id** id of item much match id in database.
+- **id** id of item much match id in database.
 
-```
+```javascript
     "items": [
         {
             "id":"cash",
@@ -136,7 +135,7 @@ amount between those 2 numbers.
 
 Configure gta models to apply dumpster diving to.
 
-```
+```javascript
     "dumpsterModels": [
         "p_dumpster_t",
         "prop_cs_dumpster_01a",
@@ -152,13 +151,12 @@ Configure gta models to apply dumpster diving to.
 
 ### Rules
 
-**maxDumpstersPerRS** max number of dumpsters a player can loot per server
+- **maxDumpstersPerRS** max number of dumpsters a player can loot per server
 restart.
-
-**lootProbabilityPercent** (optional) if you wish to apply a possibility that
+- **lootProbabilityPercent** (optional) if you wish to apply a possibility that
 player can recieve no loot.
 
-```
+```javascript
     "rules": {
         "maxDumpstersPerRS": 8,
         "lootProbabilityPercent": 100

@@ -34,6 +34,7 @@ jobs:
         with:
           name: artifact-release
           path: dist/release
+      - name: Display structure of downloaded files
         run: ls -R dist/release
       - name: release
         uses: actions/create-release@v1

@@ -2,10 +2,25 @@ Mod to add dumpsterdiving to you fivem server. Written in typescript.
 
 Feel free to send me PR or add an issue.
 
-## ESX || QBCore??
+1. [ESX or QBCore](#esx-or-qbcore)
+2. [Images](#images)
+3. [Override styling](#override-styling)
+4. [Configure](#configure)
+
+
+## ESX or QBCore
 
 Script should have support for both frameworks when it comes to recieving money
 and items, no need to do anything.
+
+You can also edit customFramework.js to override ESX or QBCore add events with your own addItem, addMoney. 
+
+## Images
+
+![interaction text](https://i.ibb.co/cgBb5TL/Five-M-b2944-GTAProcess-2024-02-12-10-54-20.png)
+![searching](https://i.ibb.co/QkYpKHx/Five-M-b2944-GTAProcess-2024-02-12-10-54-31.png)
+![nothing found](https://i.ibb.co/vHv664r/Five-M-b2944-GTAProcess-2024-02-12-10-55-04.png)
+![recieve item](https://i.ibb.co/J5QDR1T/Five-M-b2944-GTAProcess-2024-02-12-10-55-29.png)
 
 ## Override styling
 
@@ -25,6 +40,8 @@ popup you can ovveride css variables or edit styles.css
 ## Configure
 
 **config.json** needs to be in the [config] folder
+
+**enabled** set enabled to true or false to easily toggle dumpsterdiving on you server
 
 ### Style interaction text
 

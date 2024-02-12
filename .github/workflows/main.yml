@@ -1,0 +1,53 @@
+on:
+  push:
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+    branches:
+      - main
+      - 'releases/**'
+
+name: Create Release
+
+jobs:
+  build_and_test:
+    name: Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: npm install, build, and test
+        run: |
+          npm install
+          npm run build --if-present
+          npm test --if-present
+      - name: Archive production artifacts
+        id: archive_artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifact-release
+          path: |
+            release
+            config
+            ./customFramework.js
+            ./README.md
+            ./fxmanifest.lua
+      - name: release
+        uses: actions/create-release@v1
+        id: create_release
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - name: upload windows artifact
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ${{ steps.archive_artifacts.outputs.artifact_url }}
+          asset_name: dumpsterdive.windows-amd64.zip
+          asset_content_type: application/zip

@@ -16,14 +16,6 @@ jobs:
           npm install
           npm run build --if-present
           npm test --if-present
-      - name: Archive release zip
-        id: zip_archive_artifacts
-        run:  zip -r release.zip ${{ github.workspace }}/release ${{ github.workspace }}/config ${{ github.workspace }}/README.md ${{ github.workspace }}/fxmanifest.lua 
-      - name: Archive release tar
-        id: tar_archive_artifacts
-        run:  tar -czvf release.tar.gz /release /config /README.md /fxmanifest.lua 
-      - name: Display structure of files
-        run: ls -R 
       - name: release
         uses: actions/create-release@v1
         id: create_release
@@ -34,12 +26,33 @@ jobs:
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ github.token }}
-      - name: upload windows artifact
+      - name: Archive release zip
+        id: zip_archive_artifacts
+        run: |  
+          cd ${{ github.workspace }}  
+          zip -r dumpsterdive.release.zip /release /config /README.md /fxmanifest.lua 
+      - name: Archive release tar
+        id: tar_archive_artifacts
+        run: |  
+          cd ${{ github.workspace }}
+          tar -czvf dumpsterdive.release.tar.gz /release /config /README.md /fxmanifest.lua 
+      - name: Display structure of files
+        run: ls -R 
+      - name: upload zip artifact
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: release.zip
+          asset_path: dumpsterdive.release.zip
           asset_name: dumpsterdive.release.zip
           asset_content_type: application/zip
+      - name: upload tar artifact
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: dumpsterdive.release.tar.gz
+          asset_name: dumpsterdive.release.tar.gz
+          asset_content_type: application/gzip

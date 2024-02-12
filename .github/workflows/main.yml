@@ -16,26 +16,14 @@ jobs:
           npm install
           npm run build --if-present
           npm test --if-present
-      - name: Archive artifacts
-        id: archive_artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: artifact-release
-          retention-days: 1
-          path: |
-            release
-            config
-            ./customFramework.js
-            ./README.md
-            ./fxmanifest.lua
-      - name: Download Artifact
-        uses: actions/download-artifact@v4
-        id: download_artifacts
-        with:
-          name: artifact-release
-          path: dist/release
-      - name: Display structure of downloaded files
-        run: ls -R dist/release
+      - name: Archive release zip
+        id: zip_archive_artifacts
+        run:  zip -r release.zip /release /config /README.md /fxmanifest.lua 
+      - name: Archive release tar
+        id: tar_archive_artifacts
+        run:  tar -czvf release.tar.gz /release /config /README.md /fxmanifest.lua 
+      - name: Display structure of files
+        run: ls -R 
       - name: release
         uses: actions/create-release@v1
         id: create_release
@@ -52,6 +40,6 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: "${{ steps.download_artifacts.outputs.download-path }}/artifact-release.zip"
+          asset_path: release.zip
           asset_name: dumpsterdive.release.zip
           asset_content_type: application/zip

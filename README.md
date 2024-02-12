@@ -7,13 +7,12 @@ Feel free to send me PR or add an issue.
 3. [Override styling](#override-styling)
 4. [Configure](#configure)
 
-
 ## ESX or QBCore
 
 Script should have support for both frameworks when it comes to recieving money
 and items, no need to do anything.
 
-You can also edit customFramework.js to override ESX or QBCore add events with your own addItem, addMoney. 
+You can also edit customFramework.js to override ESX or QBCore add events with your own addItem, addMoney.
 
 ## Images
 

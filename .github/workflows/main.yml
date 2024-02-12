@@ -32,6 +32,9 @@ jobs:
             ./customFramework.js
             ./README.md
             ./fxmanifest.lua
+      - name: Echo artifact
+        run: echo ${{ steps.archive_artifacts.outputs.artifact_url }}
+        id: echo_artifact
       - name: release
         uses: actions/create-release@v1
         id: create_release

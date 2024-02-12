@@ -1,16 +1,20 @@
-Mod to add dumpsterdiving to you fivem server. Written in typescript.
+Mod to add dumpsterdiving to you fivem server.
+Using typescript and esbuild as well as jest for unittests
 
-Feel free to send me PR or add an issue.
+Feel free to add PRs or create issues. 
 
 1. [ESX or QBCore](#esx-or-qbcore)
 2. [Images](#images)
 3. [Override styling](#override-styling)
 4. [Configure](#configure)
+5. [Roadmap](#roadmap)
 
 ## ESX or QBCore
 
 Script should have support for both frameworks when it comes to recieving money
 and items, no need to do anything.
+
+Note: not fully tested in ESX yet.
 
 You can also edit customFramework.js to override ESX or QBCore add events with your own addItem, addMoney.
 

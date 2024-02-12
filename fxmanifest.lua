@@ -19,5 +19,6 @@ files {
     'release/html/index.html',
     'release/html/css/styles.css',
     'release/html/progressbar.js',
-    'release/html/notify.js'
+    'release/html/notify.js',
+    'customFramework.js',
 }

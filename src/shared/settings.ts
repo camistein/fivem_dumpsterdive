@@ -1,3 +1,4 @@
+import { getJsonResourceFile } from './fileUtilities';
 import LootItem from './lootItem';
 
 export interface Color {
@@ -37,12 +38,12 @@ export default interface Settings {
 	rules: Rules;
 	items: LootItem[];
 	dumpsterModels: string[];
+	enabled: boolean;
 }
 
 export const getSettings = (resource: string): Settings | null => {
 	try {
-		const file = LoadResourceFile(resource, 'config/config.json');
-		return JSON.parse(file) as Settings;
+		return getJsonResourceFile<Settings>(resource, 'config/config.json');
 	} catch (err) {
 		console.error(err);
 		return null;

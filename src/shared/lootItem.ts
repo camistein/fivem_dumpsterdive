@@ -1,15 +1,3 @@
-// {
-//     "id":"",
-//     "label": "",
-//     "amount": 1,
-//     "ammo": {
-//         "id": "",
-//         "amount": 1
-//     },
-//     "chance": 0.25,
-//     "attributes": {}
-// }
-
 export default interface LootItem {
 	id: string;
 	label: string;
@@ -22,13 +10,4 @@ export default interface LootItem {
 
 export interface Attributes {
 	[key: string]: string | number | any | null;
-}
-
-export interface Ammo {
-	id: string;
-	amount: number;
-}
-
-export interface LootTable {
-	items: LootItem[];
 }

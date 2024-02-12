@@ -81,9 +81,7 @@ const DV_ProgressBar = {
 				headers: {
 					'Content-Type': 'application/json; charset=UTF-8',
 				},
-			})
-				.then((resp) => resp.json())
-				.then((resp) => console.log(resp));
+			}).catch((err) => console.error(err));
 		});
 	},
 	close: () => {

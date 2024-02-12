@@ -1,11 +1,10 @@
 import { defaultState } from './serverState';
 import { getSettings } from '../shared/settings';
 import { retrieveLoot } from './lootUtilities';
-import { getFramework } from './frameworkUtilities';
+import { Framework, getFramework } from './frameworkUtilities';
 import LootItem from '../shared/lootItem';
 
-let ESX: any = null;
-let QBCore: any = null;
+let currentFramework: Framework | null = null;
 
 const state = defaultState;
 on('onResourceStart', (resName: string) => {
@@ -13,15 +12,12 @@ on('onResourceStart', (resName: string) => {
 		console.log('Dumsterdive:server started!');
 		state.settings = getSettings(GetCurrentResourceName());
 
-		const framework = getFramework();
-		if (!!framework) {
-			console.log(`Dumpsterdive:running on framework ${framework.name}`);
-			if (framework.name === 'QBCore') {
-				QBCore = framework.export;
-			} else if (framework.name === 'ESX') {
-				ESX = framework.export;
+		getFramework(GetCurrentResourceName()).then((framework) => {
+			if (!!framework) {
+				console.log(`Dumpsterdive:running on framework ${framework.name}`);
+				currentFramework = framework;
 			}
-		}
+		});
 		if (state.settings == null) {
 			console.log('config.json missing');
 		}
@@ -48,26 +44,14 @@ const checkLootedDumpsters = (player: number, dumpsterId?: string) => {
 };
 
 const addMoney = (loot: LootItem) => {
-	if (!!QBCore?.Functions) {
-		const qbPlayer = QBCore?.Functions?.GetPlayer(source);
-		qbPlayer?.Functions.AddMoney('cash', loot.amount, 'dumpsterdiving');
-	}
-
-	if (!!ESX && !!ESX?.GetPlayerFromId) {
-		const xPlayer = ESX.GetPlayerFromId(source);
-		xPlayer?.AddMoney(loot.amount);
+	if (!!currentFramework) {
+		currentFramework.addMoney(source, loot);
 	}
 };
 
 const addItem = (loot: LootItem) => {
-	if (!!QBCore?.Functions) {
-		const qbPlayer = QBCore?.Functions?.GetPlayer(source);
-		qbPlayer.Functions.AddItem(loot.id, loot.amount);
-	}
-
-	if (!!ESX?.GetPlayerFromId) {
-		const xPlayer = ESX.GetPlayerFromId(source);
-		xPlayer.setInventoryItem(loot.id, loot.amount);
+	if (!!currentFramework) {
+		currentFramework.addItem(source, loot);
 	}
 };
 

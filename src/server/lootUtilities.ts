@@ -32,11 +32,13 @@ const getLootItem = (items: LootItem[]): LootItem | null => {
 		.map((item) => item.chance)
 		.reduce((a, b) => a + b, 0);
 	const lootPositions: number[] = [];
+
 	availableLoot.forEach((item, index) => {
 		for (var i = 0; i < item.chance; i++) {
 			lootPositions.push(index);
 		}
 	});
+
 	const roll = Math.floor(Math.random() * totalW);
 	const lootIndex = lootPositions[roll];
 	const loot = availableLoot[lootIndex];

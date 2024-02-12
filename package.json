@@ -20,7 +20,7 @@
 		"lru-cache": "7.18.0",
 		"path-scurry": "1.6.3",
 		"prettier": "3.2.5",
-		"rimraf": "^5.0.1",
+		"rimraf": "~3.0.1",
 		"typescript": "^5.2.2"
 	},
 	"dependencies": {}

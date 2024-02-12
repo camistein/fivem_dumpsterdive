@@ -60,6 +60,54 @@ const getClosestDumpster = (
 	return null;
 };
 
+const initDumpsterDive = () => {
+	if (state.currentDumpster != null && state.player !== null) {
+		Wait(3000);
+		if (!IsEntityDead(GetPlayerPed(-1))) {
+			if (IsControlJustPressed(0, 23) || IsControlJustPressed(0, 38)) {
+				if (!state.searching) {
+					state.searching = true;
+					FreezeEntityPosition(state.player.id, true);
+					TaskStartScenarioInPlace(
+						state.player.id,
+						'PROP_HUMAN_BUM_BIN',
+						0,
+						true,
+					);
+					SendNUIMessage({
+						action: 'dv_progressbar_open',
+						duration: 10000,
+						label: state.settings?.translations?.searching,
+					});
+				}
+			}
+
+			if (IsControlJustPressed(0, 202)) {
+				closeDumpsterDive();
+			}
+		} else {
+			closeDumpsterDive();
+		}
+	}
+};
+
+const resetState = () => {
+	state.currentDumpster = null;
+	state.searching = false;
+	if (state.player != null) {
+		FreezeEntityPosition(state.player.id, false);
+		ClearPedTasks(state.player.id);
+		state.player.nearDumpster = false;
+	}
+};
+
+const closeDumpsterDive = () => {
+	SendNUIMessage({
+		action: 'dv_progressbar_close',
+	});
+	resetState();
+};
+
 on('onResourceStart', (resName: string) => {
 	if (resName === GetCurrentResourceName()) {
 		console.log(GetCurrentResourceName() + ' started! Retrieving settings');
@@ -73,7 +121,7 @@ on('onResourceStart', (resName: string) => {
 });
 
 setTick(() => {
-	if (state.settings !== null) {
+	if (state.settings !== null && state.settings.enabled) {
 		Wait(3000);
 		if (!!state.player) {
 			const [x, y, z] = GetEntityCoords(state.player.id, true);
@@ -124,56 +172,7 @@ setTick(() => {
 	}
 });
 
-const initDumpsterDive = () => {
-	if (state.currentDumpster != null && state.player !== null) {
-		Wait(3000);
-		if (!IsEntityDead(GetPlayerPed(-1))) {
-			if (IsControlJustPressed(0, 23) || IsControlJustPressed(0, 38)) {
-				if (!state.searching) {
-					state.searching = true;
-					FreezeEntityPosition(state.player.id, true);
-					TaskStartScenarioInPlace(
-						state.player.id,
-						'PROP_HUMAN_BUM_BIN',
-						0,
-						true,
-					);
-					SendNUIMessage({
-						action: 'dv_progressbar_open',
-						duration: 10000,
-						label: state.settings?.translations?.searching,
-					});
-				}
-			}
-
-			if (IsControlJustPressed(0, 202)) {
-				closeDumpsterDive();
-			}
-		} else {
-			closeDumpsterDive();
-		}
-	}
-};
-
-const resetState = () => {
-	state.currentDumpster = null;
-	state.searching = false;
-	if (state.player != null) {
-		FreezeEntityPosition(state.player.id, false);
-		ClearPedTasks(state.player.id);
-		state.player.nearDumpster = false;
-	}
-};
-
-const closeDumpsterDive = () => {
-	SendNUIMessage({
-		action: 'dv_progressbar_close',
-	});
-	resetState();
-};
-
 RegisterNuiCallbackType('dumpsterdive:Finished');
-
 on('__cfx_nui:dumpsterdive:Finished', (data: any, cb: (data: any) => void) => {
 	if (!!state.currentDumpster && state.currentDumpster !== null) {
 		emitNet('dumpsterdive:RecieveLoot', GetPlayerPed(-1), {
@@ -185,8 +184,8 @@ on('__cfx_nui:dumpsterdive:Finished', (data: any, cb: (data: any) => void) => {
 });
 
 onNet('dumpsterdive:RecievedLoot', (data: any) => {
-	let itemInfo = `${!!data?.item ? '<span class="dv-notify-item">' : ''}${(data?.item?.amount ?? 0) > 1 ? data.item.amount : 1} ${!!data.item ? `${data.item.label}</span>` : ''}`;
-	let message = `<p>${data.item !== null ? state.settings?.translations?.recievedItem : state.settings?.translations?.recievedNoItem} ${itemInfo}</p>`;
+	const itemInfo = `${!!data?.item ? '<span class="dv-notify-item">' : ''}${(data?.item?.amount ?? 0) > 1 ? data.item.amount : 1} ${!!data.item ? `${data.item.label}</span>` : ''}`;
+	const message = `<p>${data.item !== null ? state.settings?.translations?.recievedItem : state.settings?.translations?.recievedNoItem} ${itemInfo}</p>`;
 	SendNUIMessage({
 		action: 'dv_notify_open',
 		text: message,
